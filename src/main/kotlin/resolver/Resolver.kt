@@ -36,8 +36,11 @@ class Resolver(private val players: List<Player>) : IResolver {
             .associate { it.key to it.value }
 
     override fun getMostValuablePlayers(): List<Player> =
-        players.sortedWith(compareByDescending<Player> { it.usefulness }.thenBy { it.name })
+        players.sortedWith(compareByDescending(::usefulness).thenBy { it.name })
             .take(3)
+
+    /** Полезность игрока в задаче 6: голы + 2 × голевые передачи. */
+    fun usefulness(player: Player): Int = player.goals + 2 * player.assists
 
     override fun getMostPopularAgencyByCountry(): Map<String, String> =
         players.groupBy { it.nationality }

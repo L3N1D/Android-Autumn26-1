@@ -44,7 +44,7 @@ fun main() {
             section("6. Топ-3 полезных игрока (голы + 2 × передачи)") {
                 resolver.getMostValuablePlayers().forEachIndexed { index, player ->
                     metric("${index + 1}. ${player.name}") {
-                        "${player.usefulness} (${player.goals} + 2 × ${player.assists})"
+                        "${resolver.usefulness(player)} (${player.goals} + 2 × ${player.assists})"
                     }
                 }
             }

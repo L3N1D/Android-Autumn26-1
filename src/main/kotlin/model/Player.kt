@@ -13,7 +13,4 @@ data class Player(
     val assists: Int,
     val yellowCards: Int,
     val redCards: Int,
-) {
-    /** Полезность игрока: голы + 2 × голевые передачи. */
-    val usefulness: Int get() = goals + 2 * assists
-}
+)
